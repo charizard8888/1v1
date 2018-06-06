@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Break!</title>
+<style>
+button {
+background-color: black;
+color: Aqua;
+border: solid 4px Aqua;
+font-size:24px;
+cursor: pointer;
+}
+input {
+width: 300px;
+height: 20px;
+}
+h1 {
+font-family: Jokerman;
+color: Aqua;
+background-color:black;
+width: 30%;
+border: solid 4px Aqua;
+text-align: center;
+}
+p {
+font-size: 20px;
+}
+div {
+background-color: black;
+color: lime;
+width: 60%;
+}
+</style>
+</head>
+<body>
+<center>
+<h1>Checks and Counters Tool</h1>
+<input id="monname" list="allmons"/> <br />
+<br />
+<button onClick="breakit()">Break!</button></center>
+<p id="breakhere"></p>
+
+</body>
+
+<datalist id="allmons">
+<option value="Offensive Mega Charizard X">
+<option value="SubReversal Mega Lucario">
+</datalist>
+
+<script>
+function breakit()
+{
+let mons = {
+offensivemegacharizardx: {
+name: "Offensive Mega Charizard X",
+counters: ["Rockium Z Gigalith"," Rockium Z Terrakion", " Choice Band Garchomp", " Air Balloon Heatran", " Rockium Z Nihilego", " Standard Mega Gyarados", " Choice Specs Naganadel", " All Out Attacker Mega Lopunny"],
+checks: ["Snorlax", " SubReversal Mega Lucario"],
+moveset: ["<div>Mega Charizard X @ Charizardite X<br/>Ability: Blaze<br />252 Atk / 4 SpD / 252 Spe<br />Jolly Nature<br />- Dragon Dance<br />- Outrage<br />- Flare Blitz<br />- Substitute / Flame Charge</div>"],
+analysis: ["<a href=&quot;&quot; target=&quot;_blank&quot;>Read Analysis</a>"],
+},
+
+subreversalmegalucario: {
+name: "SubReversal Mega Lucario",
+counters: [ "Scarf Garchomp", " Greninja", " Pheromosa", " Scarf Victini", " Scarf Darmanitan"],
+checks: ["Mega Charizard X", " Mega Gyarados", " Dragonite"],
+moveset: ["<div>Mega Lucario @ Lucarionite<br/>Ability: Inner Focus<br />252 Atk / 4 SpD / 252 Spe<br />Jolly Nature<br />- Substitute<br />- Reversal<br />- Meteor Mash / Rock Tomb<br />- Magnet Rise / Swords Dance</div>"],
+analysis: ["<a href=&quot;&quot; target=&quot;_blank&quot;>Read Analysis</a>"],
+},
+
+};
+Object.values(mons).forEach(monster => {
+let monname = document.getElementById("monname").value;
+if (monname === monster.name) {
+document.getElementById("breakhere").innerHTML = `${monster.moveset}<br>${monster.analysis}<h2>Counters</h2>${monster.counters}<br><br><h2>Checks</h2>${monster.checks}`;
+//document.getElementById("breakhere").innerHTML = `${monster.moveset} <br> ${monname}`;
+}
+});
+}
+</script>
+</html>
